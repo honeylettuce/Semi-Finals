@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+
+            }
+        
+            .slod button{
+                position: absolute;
+                background-color: transparent;
+                font-size: 23px;
+                text-align: center;
+                color: #fff;
+                text-decoration: none;
+                border: 2px solid #fff;
+                padding: 15px 25px;
+                border-radius: 50px;
+                margin: 10;
+                bottom: 20%;
+                left: 43%;
+                transition: 0.3s;
+            }
+
+            .slod button:hover{
+                background-color: #ffff;
+                color: #000;
+            }
+            .container{
+                width: 100%;
+                height: 100vh;
+                background-color: black;
+                background-size: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .vid{
+                width: 100%;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                z-index: -1;
+            }
+            video{
+                scale: 175%;
+                position: absolute;
+
+
+            }
+        </style>
+    </head>
+<body>
+
+<div class = "container">
+    
+    <video autoplay muted loop plays-inline id = "vid">
+
+        <source src = "videoo.mp4" type = "video/mp4">
+
+    </video>
+
+    <div class = "slod">
+        <button onclick="document.location='COLOR_GAME_2.html'">Enter Game</button> 
+    </div>
+
+</div>
+
+    </body>
+</html>
