@@ -1,6 +1,6 @@
 body {
 	font-family: "Raleway", Sans-serif;
-	font-size: 62.5%; /*1 em = 10px */
+	font-size: 62.5%;
 	margin: 0;
 	background-image: linear-gradient(to bottom, grey, rgb(0, 0, 0));
 }
