@@ -40,7 +40,7 @@ function setupSquares() {
 		});
 	}
 }
-
+/*Mode for the game*/
 function setupMode() {
 	for(let i = 0; i < modeButtons.length; i++) {
 		modeButtons[i].addEventListener("click", function() {
@@ -93,7 +93,7 @@ function genRandomColors(num) {
 	}
 	return arr;
 }
-
+/* Randomize RGB numbers for guessing*/
 function makeColor() {
 	let r = Math.floor(Math.random() * 256);
 	let g = Math.floor(Math.random() * 256);
