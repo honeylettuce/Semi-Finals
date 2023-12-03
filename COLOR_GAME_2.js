@@ -7,6 +7,8 @@ let colorDisplay = document.querySelector("#color-display");
 let messageDisplay = document.querySelector("#message");
 let h1 = document.querySelector("h1");
 let resetButton = document.querySelector("#reset");
+let modeButtons = document.querySelectorAll(".mode");
+let easyButton = document.querySelector(".mode");
 
 
 init();
