@@ -30,6 +30,8 @@ resetButton.addEventListener("click", function() {
 /* setting up the behavior of each square on the page. */
 function setupSquares() {
 	for (let i = 0; i < squares.length; i++) {
+		
+		// Sets the background color of each square to a corresponding color from the colors array.
 		squares[i].style.backgroundColor = colors[i];
 		squares[i].addEventListener("click", function() {
 			let clickedColor = this.style.backgroundColor;
@@ -37,7 +39,8 @@ function setupSquares() {
 			if(clickedColor === pickedColor) {
 				messageDisplay.textContent = "Correct!";
 				resetButton.textContent = "Play Again";
-				changeColors(pickedColor);
+				changeColors(pickedColor); 
+				// Calls a function named changeColors with the pickedColor parameter, likely to update the colors of all squares to the correct color.
 			}
 			/* encourage the player to try again. */
 			else {
