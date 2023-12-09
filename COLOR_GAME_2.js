@@ -9,8 +9,6 @@ let colorDisplay = document.querySelector("#color-display");
 let messageDisplay = document.querySelector("#message");
 let h1 = document.querySelector("h1");
 let resetButton = document.querySelector("#reset");
-let modeButtons = document.querySelectorAll(".mode");
-let easyButton = document.querySelector(".mode");
 
 /* function when the script runs*/
 init();
@@ -18,7 +16,6 @@ init();
 function init() {
 	colorDisplay.textContent = pickedColor;
 	setupSquares();
-	setupMode();
 	reset();
 }
 
@@ -50,28 +47,6 @@ function setupSquares() {
 		});
 	}
 }
-/* to handle the setup */
-function setupMode() {
-	/* used to visually indicate which mode is currently selected. */
-	for(let i = 0; i < modeButtons.length; i++) {
-		modeButtons[i].addEventListener("click", function() {
-			/* represents buttons corresponding to different game modes. */
-			for (let i = 0; i < modeButtons.length; i++) {
-				/* When a mode button is clicked, the function inside the event listener is executed. */
-				modeButtons[i].classList.remove("selected");
-			}
-			/* visually highlights the currently selected mode. */
-			this.classList.add("selected");
-			/* represents the number of squares or elements to be displayed on the page, adjusting the difficulty level. */
-			if (this.textContent === "Easy") {
-				numSquares = 3;
-			}
-			/* to reset the game with the new settings. */
-			reset();
-		});
-	}
-}
-
 
 function reset() {
 	
