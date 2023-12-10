@@ -1,136 +1,97 @@
-/*Assigning the variables with values*/
 let numSquares = 3;
-let colors = [];
-let pickedColor;
+let colors = []; //array to store generated colors
+let pickedColor; // color that the player needs to guess
 
-/*Assigning new variables*/
-let squares = document.querySelectorAll(".square");
-let colorDisplay = document.querySelector("#color-display");
-let messageDisplay = document.querySelector("#message");
-let h1 = document.querySelector("h1");
-let resetButton = document.querySelector("#reset");
+let squares = document.querySelectorAll(".square"); //array of square elements 
+let colorDisplay = document.querySelector("#color-display"); // Display for the target color
+let messageDisplay = document.querySelector("#message"); // Display for game messages
+let h1 = document.querySelector("h1"); // Header element
+let resetButton = document.querySelector("#reset"); // Reset button element
 
-/* function when the script runs*/
-init();
-/* the purpose of this is to display to show the color that the player needs to guess*/
+init(); //Initialization function
+
 function init() {
-	colorDisplay.textContent = pickedColor;
-	setupSquares();
-	reset();
+	colorDisplay.textContent = pickedColor; // Set the initial display for the target color
+	//Set up the initial colors for squares using the 'colors' array
+	setupSquares(); // Set up the squares and their event listeners
+	reset(); // Reset the game
 }
 
-/* to reset or restart the game.*/
+//Event listener for the reset button
 resetButton.addEventListener("click", function() {
 	reset();
 });
 
-/* setting up the behavior of each square on the page. */
+// Function to set up the squares and their click event listeners
 function setupSquares() {
 	for (let i = 0; i < squares.length; i++) {
-		
-		// Sets the background color of each square to a corresponding color from the colors array.
-		squares[i].style.backgroundColor = colors[i];
+		// Set initial colors for the squares using the 'colors' array
+		squares[i].style.backgroundColor = colors[i]; // Set initial colors for the squares
 		squares[i].addEventListener("click", function() {
-			let clickedColor = this.style.backgroundColor;
-			/* to visually indicate a correct guess. */
+			let clickedColor = this.style.backgroundColor; // Get the color of the clicked square
 			if(clickedColor === pickedColor) {
-				messageDisplay.textContent = "Correct!";
-				resetButton.textContent = "Play Again";
-				changeColors(pickedColor); 
-				// Calls a function named changeColors with the pickedColor parameter, likely to update the colors of all squares to the correct color.
+				messageDisplay.textContent = "Correct!"; // Display correct message	
+				resetButton.textContent = "Play Again"; // Update button text
+				changeColors(pickedColor); // Change colors of all squares and header
 			}
-			/* encourage the player to try again. */
 			else {
-				this.style.backgroundColor = "#232323";
-				messageDisplay.textContent = "try again";
+				this.style.backgroundColor = "#232323"; // Change background color for incorrect guess
+				messageDisplay.textContent = "try again"; // Display try again message
 			}
 		});
 	}
 }
 
+// Function to reset the game
 function reset() {
-	
-	// Generate random colors for the squares
-	colors = genRandomColors(numSquares);
-	
-	// Pick a new color for the player to guess
-	pickedColor = chooseColor();
-	
-	// Update the displayed color to guess
-	colorDisplay.textContent = pickedColor;
-	
-	// Reset background color of h1
-	h1.style.backgroundColor = "#2C8E99";
-	
-	// Change the text content of the resetButton
-	resetButton.textContent = "New Colors";
-	
-	// Clear the message display
-	messageDisplay.textContent = "";
-
-	// Loop through each square
+	// Generate new random colors and assign them to the 'colors' array
+	colors = genRandomColors(numSquares); // Generate new random colors
+	pickedColor = chooseColor(); // Choose a color for the player to guess
+	colorDisplay.textContent = pickedColor; // Update the displayed target color
+	h1.style.backgroundColor = "#2C8E99"; // Reset header background color
+	resetButton.textContent = "New Colors"; // Reset button text
+	messageDisplay.textContent = ""; // Clear game message
 	for (let i = 0; i < squares.length; i++) {
-
-		// Check if there is a color at this index
 		if(colors[i]) {
-
-			// Show the square and set its color
-			squares[i].style.display = "block";
+			squares[i].style.display = "block"; // Show squares with colors
 			squares[i].style.backgroundColor = colors[i];
 		}
 		else {
-
-			// Hide the square (if there is no color at this index)
-			squares[i].style.display = "none";
+			squares[i].style.display = "none"; // Hide squares with no color
 		}
 	}
 }
 
+// Function to change the colors of the squares and heade
 function changeColors(color) {
 	for(let i = 0; i < squares.length; i++) {
-		
-		// Set the background color of each square to the specified color
-		squares[i].style.backgroundColor = color;
-
-		// Set the background color of h1 to the specified color
-		h1.style.backgroundColor = color;
+		squares[i].style.backgroundColor = color; // Change background color for all squares
+		h1.style.backgroundColor = color; // Change header background color
 	}
 }
 
-// Function to randomly choose a color from the 'colors' array
+// Function to choose a random color from the 'colors' array as the correct color
 function chooseColor() {
-
-	// Generate a random floating-point number between 0 (inclusive) and 1 (exclusive)
 	let random = Math.floor(Math.random() * colors.length);
-
-	// Retrieve and return the color at the randomly chosen index from the 'colors' array
 	return colors[random];
 }
 
-// Function to generate an array of 'num' random colors
+// Function to generate an array of random colors for the squares
 function genRandomColors(num) {
-
-	// Create an empty array to store the random colors
+	// Temporary array ('arr') to store colors during generation
 	let arr = [];
-
-	// Loop 'num' times to generate random colors and add them to the array
+	// Loop to generate random colors and push them into 'arr'
 	for (let i = 0; i < num; i++) {
-
-		// Use the 'makeColor' function to generate a random color and add it to the array
 		arr.push(makeColor());
 	}
-
-	// Return the array of random colors
+	 // Return 'arr', which becomes the elements of the 'colors' array
 	return arr;
 }
+
 // Function to generate a random RGB color
 function makeColor() {
-
-	// Generate random values for red, green, and blue components
 	let r = Math.floor(Math.random() * 256);
 	let g = Math.floor(Math.random() * 256);
 	let b = Math.floor(Math.random() * 256);
-
-	// Return the RGB color string using the generated values
 	return "rgb(" + r + ", " + g + ", " + b + ")";
 }
