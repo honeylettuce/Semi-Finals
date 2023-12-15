@@ -72,7 +72,7 @@ function changeColors(color) {
 
 // Function to choose a random color from the 'colors' array as the correct color
 function chooseColor() {
-	let random = Math.floor(Math.random() * colors.length);
+	let random = Math.floor(Math.random() * colors.length); // randomly choose a correct color from the array
 	return colors[random];
 }
 
@@ -90,8 +90,8 @@ function genRandomColors(num) {
 
 // Function to generate a random RGB color
 function makeColor() {
-	let r = Math.floor(Math.random() * 256);
-	let g = Math.floor(Math.random() * 256);
-	let b = Math.floor(Math.random() * 256);
+	let r = Math.floor(Math.random() * 256); // This generates the random color for the Red in RGB
+	let g = Math.floor(Math.random() * 256); // Generates the Green random color for the RGB
+	let b = Math.floor(Math.random() * 256); // Generates the random color for the color Blue in the RGB
 	return "rgb(" + r + ", " + g + ", " + b + ")";
 }
